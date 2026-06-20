@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F1117">
+<title>Stocke al Toque — El control de tu negocio, al toque</title>
+<meta name="description" content="Stocke al Toque es la plataforma simple para gestionar stock, fiados y proveedores en tu almacén, kiosco o dietética. Reemplazá el cuaderno por algo que sí te avisa.">
+<link rel="icon" href="stock-al-toque-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#5CBF4A;
+  --primary-dark:#4DA83D;
+  --primary-light:#7DD96A;
+  --primary-glow:rgba(92,191,74,.22);
+  --accent:#FFD54A;
+  --accent-glow:rgba(255,213,74,.16);
+  --bg:#0F1117;
+  --bg-secondary:#181C24;
+  --surface:#1E232E;
+  --surface-hover:#252B38;
+  --line:#2A2F3A;
+  --line-strong:#383E4A;
+  --text:#FFFFFF;
+  --muted:#AAB2C0;
+  --muted-soft:#6B7280;
+  --danger:#F97066;
+  --warning:#FFD54A;
+  --info:#60A5FA;
+  --shadow:0 22px 60px -28px rgba(0,0,0,.75);
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-display:"DM Sans","Inter",sans-serif;
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:20px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{background:var(--bg);-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  margin:0;min-height:100dvh;
+  background:
+    radial-gradient(700px circle at 80% -10%, rgba(92,191,74,.1), transparent 58%),
+    radial-gradient(600px circle at 10% 20%, rgba(255,213,74,.06), transparent 55%),
+    linear-gradient(180deg,#0F1117 0%,#11151D 52%,#0F1117 100%);
+  color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+::selection{background:var(--primary);color:#0A0E14;}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px;}
+.container{width:min(1180px,100%);margin:0 auto;padding:0 20px;}
+
+/* ---- topbar ---- */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,17,23,.86);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 20px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:18px;font-weight:700;text-decoration:none;}
+.brand .dot{color:var(--primary);}
+.brand-mark{width:32px;height:32px;border-radius:9px;flex-shrink:0;object-fit:contain;}
+.nav-links{display:none;gap:26px;font-size:14px;font-weight:600;color:var(--muted);}
+.nav-links a{transition:color .18s ease;}
+.nav-links a:hover{color:var(--primary-light);}
+.topbar-cta{display:flex;align-items:center;gap:10px;}
+
+/* ---- buttons (mismas convenciones del sistema) ---- */
+.btn{
+  min-height:42px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);
+  background:var(--bg-secondary);color:var(--text);display:inline-flex;align-items:center;
+  justify-content:center;gap:7px;padding:0 18px;font-size:14px;font-weight:700;
+  text-decoration:none;transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease;
+  cursor:pointer;font-family:inherit;
+}
+.btn:hover{transform:translateY(-1px);border-color:var(--primary);color:var(--primary-light);background:var(--surface-hover);}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:#0A0E14;box-shadow:0 8px 28px -16px var(--primary);}
+.btn.primary:hover{background:var(--primary-light);color:#0A0E14;}
+.btn.secondary{background:transparent;}
+.btn.lg{min-height:52px;padding:0 28px;font-size:16px;font-family:var(--font-display);}
+
+/* ---- hero ---- */
+.hero{padding:64px 0 56px;}
+.hero-grid{display:grid;gap:40px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(92,191,74,.32);
+  background:rgba(92,191,74,.1);color:var(--primary-light);font-size:12px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:18px;
+  animation:fadeUp .5s ease both;
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(32px,6vw,52px);
+  line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;
+  animation:fadeUp .6s ease both .05s;
+}
+.hero h1 .hl{color:var(--primary);}
+.hero p.lead{
+  font-size:17px;color:var(--muted);max-width:50ch;margin:0 0 28px;
+  animation:fadeUp .6s ease both .1s;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px;animation:fadeUp .6s ease both .15s;}
+.hero-trust{display:flex;flex-wrap:wrap;gap:18px;color:var(--muted-soft);font-size:13px;animation:fadeUp .6s ease both .2s;}
+.hero-trust span{display:flex;align-items:center;gap:6px;}
+.hero-trust .ico{color:var(--primary);}
+
+.hero-visual{position:relative;animation:fadeUp .7s ease both .2s;}
+.mock-phone{
+  width:min(320px,100%);margin:0 auto;border-radius:28px;border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,var(--bg-secondary),var(--bg));
+  box-shadow:var(--shadow);padding:14px;position:relative;
+}
+.mock-screen{background:var(--surface);border-radius:18px;border:1px solid var(--line);overflow:hidden;}
+.mock-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);}
+.mock-topbar b{font-family:var(--font-display);font-size:14px;}
+.mock-topbar b::first-letter{color:var(--primary);}
+.mock-dot{width:8px;height:8px;border-radius:999px;background:var(--primary);box-shadow:0 0 0 4px var(--primary-glow);}
+.mock-body{padding:12px 14px 16px;display:flex;flex-direction:column;gap:8px;}
+.mock-card{
+  background:var(--bg-secondary);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;
+}
+.mock-card .name{font-weight:600;}
+.mock-card .sub{color:var(--muted-soft);font-size:11px;}
+.mock-pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;}
+.mock-pill.ok{background:rgba(92,191,74,.14);color:var(--primary-light);}
+.mock-pill.warn{background:rgba(255,213,74,.14);color:var(--accent);}
+.mock-pill.low{background:rgba(249,112,102,.14);color:var(--danger);}
+.mock-total{margin-top:4px;border-radius:var(--radius-sm);background:var(--primary);color:#0A0E14;text-align:center;
+  font-family:var(--font-display);font-weight:800;padding:11px;font-size:14px;}
+.float-card{
+  position:absolute;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius-md);
+  padding:10px 14px;box-shadow:var(--shadow);font-size:12.5px;display:flex;align-items:center;gap:8px;
+  animation:floaty 4.5s ease-in-out infinite;
+}
+.float-card b{font-family:var(--font-display);}
+.float-1{top:-6px;right:-10px;color:var(--primary-light);animation-delay:.2s;}
+.float-2{bottom:36px;left:-22px;color:var(--accent);animation-delay:1s;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---- section shell ---- */
+section{padding:64px 0;}
+.section-head{max-width:640px;margin:0 auto 40px;text-align:center;}
+.section-tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary-light);margin-bottom:10px;}
+.section-head h2{font-family:var(--font-display);font-size:clamp(24px,4vw,34px);font-weight:800;margin:0 0 12px;letter-spacing:-.01em;}
+.section-head p{color:var(--muted);font-size:15.5px;margin:0;}
+
+/* ---- problema ---- */
+.problem-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.problem-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:20px;transition:transform .18s ease,border-color .18s ease;
+}
+.problem-card:hover{transform:translateY(-3px);border-color:rgba(249,112,102,.35);}
+.problem-card .ico{
+  width:42px;height:42px;border-radius:var(--radius-sm);background:rgba(249,112,102,.1);
+  color:var(--danger);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;
+}
+.problem-card h3{font-size:15.5px;margin:0 0 6px;font-weight:700;}
+.problem-card p{margin:0;color:var(--muted);font-size:13.5px;}
+
+/* ---- solucion ---- */
+.solution{
+  background:linear-gradient(135deg,rgba(92,191,74,.08),rgba(92,191,74,.02));
+  border:1px solid rgba(92,191,74,.22);border-radius:var(--radius-lg);
+  padding:44px;display:grid;gap:30px;align-items:center;
+}
+.solution h2{font-family:var(--font-display);font-size:clamp(22px,4vw,30px);font-weight:800;margin:0 0 14px;}
+.solution p{color:var(--muted);font-size:15.5px;margin:0 0 18px;}
+.solution-points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.solution-points li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;}
+.solution-points .check{color:var(--primary);flex-shrink:0;font-weight:800;}
+
+/* ---- caracteristicas ---- */
+.features-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.feature-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:22px;transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.feature-card:hover{transform:translateY(-4px);border-color:var(--primary);background:var(--surface-hover);}
+.feature-card .ico{
+  width:46px;height:46px;border-radius:var(--radius-sm);background:var(--primary-glow);
+  color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:14px;
+}
+.feature-card h3{font-size:16px;margin:0 0 8px;font-family:var(--font-display);font-weight:700;}
+.feature-card p{margin:0;color:var(--muted);font-size:13.5px;}
+
+/* ---- beneficios ---- */
+.benefits-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+.benefit-card{
+  text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:24px 16px;transition:transform .18s ease,border-color .18s ease;
+}
+.benefit-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+.benefit-card .ico{font-size:26px;margin-bottom:10px;}
+.benefit-card h3{margin:0 0 4px;font-size:14.5px;font-weight:700;}
+.benefit-card p{margin:0;color:var(--muted-soft);font-size:12.5px;}
+
+/* ---- como funciona ---- */
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));position:relative;}
+.step-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:24px 20px;position:relative;}
+.step-num{
+  width:38px;height:38px;border-radius:50%;background:var(--primary);color:#0A0E14;
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;
+  font-size:16px;margin-bottom:14px;
+}
+.step-card h3{margin:0 0 6px;font-size:15.5px;font-weight:700;}
+.step-card p{margin:0;color:var(--muted);font-size:13.5px;}
+
+/* ---- planes ---- */
+.plan-box{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:36px;text-align:center;max-width:780px;margin:0 auto;
+}
+.plan-modules{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0;}
+.plan-chip{
+  border:1px solid var(--line-strong);background:var(--bg-secondary);border-radius:999px;
+  padding:8px 16px;font-size:13px;font-weight:600;color:var(--muted);
+}
+
+/* ---- testimonios ---- */
+.testi-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.testi-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:22px;}
+.testi-stars{color:var(--accent);font-size:14px;margin-bottom:10px;letter-spacing:2px;}
+.testi-card p.quote{margin:0 0 16px;color:var(--text);font-size:14px;line-height:1.6;}
+.testi-person{display:flex;align-items:center;gap:10px;}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;background:var(--primary-glow);color:var(--primary-light);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:14px;
+}
+.testi-person b{display:block;font-size:13.5px;}
+.testi-person span{display:block;color:var(--muted-soft);font-size:12px;}
+
+/* ---- faq ---- */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+.faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;color:var(--text);font-family:inherit;
+  font-size:14.5px;font-weight:700;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;
+  gap:12px;cursor:pointer;
+}
+.faq-q .plus{color:var(--primary);font-size:18px;transition:transform .2s ease;flex-shrink:0;}
+.faq-item.open .faq-q .plus{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-a p{margin:0;padding:0 20px 18px;color:var(--muted);font-size:13.5px;}
+
+/* ---- CTA final ---- */
+.cta-final{
+  background:linear-gradient(135deg,rgba(92,191,74,.16),rgba(255,213,74,.06));
+  border:1px solid rgba(92,191,74,.3);border-radius:var(--radius-lg);
+  padding:56px 32px;text-align:center;
+}
+.cta-final h2{font-family:var(--font-display);font-size:clamp(24px,5vw,38px);font-weight:800;margin:0 0 14px;}
+.cta-final p{color:var(--muted);font-size:15.5px;margin:0 0 28px;}
+.cta-final .hero-actions{justify-content:center;}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);padding:36px 0;}
+.footer-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;}
+.footer-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:15px;}
+footer .muted{color:var(--muted-soft);font-size:12.5px;}
+.footer-links{display:flex;gap:18px;font-size:13px;color:var(--muted);}
+.footer-links a:hover{color:var(--primary-light);}
+
+@media (min-width:768px){
+  .nav-links{display:flex;}
+  .hero-grid{grid-template-columns:1.1fr .9fr;}
+  .solution{grid-template-columns:1fr 1fr;padding:52px;}
+}
+@media (max-width:767px){
+  .hero{text-align:center;padding:44px 0 40px;}
+  .hero p.lead{margin-left:auto;margin-right:auto;}
+  .hero-actions,.hero-trust{justify-content:center;}
+  .float-card{display:none;}
+  section{padding:48px 0;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner container">
+    <a href="#top" class="brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke<span class="dot">·</span>al Toque</a>
+    <nav class="nav-links">
+      <a href="#caracteristicas">Características</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <div class="topbar-cta">
+      <a href="#cta" class="btn primary">Probar gratis</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">🟢 Hecho para comercios argentinos</span>
+        <h1>El control de tu negocio, <span class="hl">al toque</span>.</h1>
+        <p class="lead">Dejá el cuaderno. Stocke al Toque te ordena el stock, los fiados y los proveedores en un solo lugar, así nunca más perdés tiempo buscando algo que ya deberías saber.</p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn primary lg">Probar gratis</a>
+          <a href="#solucion" class="btn secondary lg">Conocer más</a>
+        </div>
+        <div class="hero-trust">
+          <span><span class="ico">✓</span> Sin tarjeta para empezar</span>
+          <span><span class="ico">✓</span> Funciona desde el celular</span>
+          <span><span class="ico">✓</span> Tus datos respaldados</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="mock-phone">
+          <div class="mock-screen">
+            <div class="mock-topbar"><b>Stocke al Toque</b><span class="mock-dot"></span></div>
+            <div class="mock-body">
+              <div class="mock-card"><div><div class="name">Coca Cola 1.5L</div><div class="sub">Stock: 18 un.</div></div><span class="mock-pill ok">OK</span></div>
+              <div class="mock-card"><div><div class="name">Yerba Playadito 1kg</div><div class="sub">Vence en 4 días</div></div><span class="mock-pill warn">Por vencer</span></div>
+              <div class="mock-card"><div><div class="name">Aceite Natura 900ml</div><div class="sub">Stock: 2 un.</div></div><span class="mock-pill low">Bajo</span></div>
+              <div class="mock-total">Total venta: $4.850</div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card float-1">📒<b>Fiado registrado</b></div>
+        <div class="float-card float-2">☁️<b>Respaldo al día</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section id="problema">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">El problema de siempre</div>
+        <h2>Llevar el negocio "a ojo" te cuesta plata todos los días</h2>
+        <p>Si te suena alguna de estas situaciones, no estás solo: la mayoría de los comercios de barrio arrancan así.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="ico">📓</div>
+          <h3>Stock en cuadernos</h3>
+          <p>Anotás lo que entra y sale a mano, y nunca sabés con certeza qué te queda hasta que vas a mirar la góndola.</p>
+        </div>
+        <div class="problem-card">
+          <div class="ico">😵</div>
+          <h3>Fiados que se olvidan</h3>
+          <p>Un cliente te queda debiendo y, entre tanta gente, se te pasa cobrarlo o no recordás cuánto era.</p>
+        </div>
+        <div class="problem-card">
+          <div class="ico">⏳</div>
+          <h3>Tiempo perdido buscando</h3>
+          <p>Buscar un precio, un vencimiento o una deuda te lleva minutos que no tenés mientras hay clientes esperando.</p>
+        </div>
+        <div class="problem-card">
+          <div class="ico">🗂️</div>
+          <h3>Desorganización general</h3>
+          <p>Sin un sistema claro, cada decisión del día a día se vuelve más difícil de lo que debería ser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUCION -->
+  <section id="solucion">
+    <div class="container">
+      <div class="solution">
+        <div>
+          <span class="eyebrow">La solución</span>
+          <h2>Todo lo que hacías en el cuaderno, pero ordenado y al alcance de la mano</h2>
+          <p>Stocke al Toque reemplaza las anotaciones sueltas por un sistema simple que cualquiera puede usar, sin cursos ni manuales. Cargás tus productos una vez y la plataforma te avisa lo que necesitás saber, cuando lo necesitás.</p>
+          <a href="#cta" class="btn primary">Quiero ordenar mi negocio</a>
+        </div>
+        <ul class="solution-points">
+          <li><span class="check">✓</span> Stock siempre actualizado, sin contar a mano</li>
+          <li><span class="check">✓</span> Fiados y deudas con recordatorios claros</li>
+          <li><span class="check">✓</span> Alertas de vencimientos antes de que sea tarde</li>
+          <li><span class="check">✓</span> Pedidos a proveedores ordenados por semana</li>
+          <li><span class="check">✓</span> Acceso desde el celular del mostrador</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARACTERISTICAS -->
+  <section id="caracteristicas">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Características principales</div>
+        <h2>Todo lo que tu negocio necesita, en un solo sistema</h2>
+        <p>Funciones pensadas para el día a día de almacenes, kioscos, dietéticas y verdulerías.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="ico">📦</div>
+          <h3>Inventario y stock</h3>
+          <p>Cargá tus productos, lotes y códigos de barras, y mirá tu stock real en cualquier momento.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ico">💰</div>
+          <h3>Cuentas corrientes y fiados</h3>
+          <p>Registrá fiados de clientes y pagos parciales sin perder un peso ni un nombre.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ico">🚚</div>
+          <h3>Proveedores y pedidos</h3>
+          <p>Organizá tu calendario de proveedores y anotá pedidos sin mezclar todo en una libreta.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ico">☁️</div>
+          <h3>Respaldo de información</h3>
+          <p>Tu información se guarda y se puede restaurar, así nunca dependés de un solo papel.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ico">⏰</div>
+          <h3>Control de vencimientos</h3>
+          <p>Te avisa qué productos están por vencer para que puedas moverlos a tiempo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="ico">📱</div>
+          <h3>Desde cualquier dispositivo</h3>
+          <p>Usalo desde el celular del mostrador o la computadora de tu casa, como te quede más cómodo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Beneficios</div>
+        <h2>Lo que ganás al dejar el cuaderno</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card"><div class="ico">🗂️</div><h3>Más organización</h3><p>Todo en un solo lugar, sin papeles sueltos.</p></div>
+        <div class="benefit-card"><div class="ico">🎯</div><h3>Menos errores</h3><p>Menos cuentas mal hechas y olvidos.</p></div>
+        <div class="benefit-card"><div class="ico">⏱️</div><h3>Ahorro de tiempo</h3><p>Encontrás lo que buscás en segundos.</p></div>
+        <div class="benefit-card"><div class="ico">😌</div><h3>Tranquilidad</h3><p>Sabés cómo está tu negocio, siempre.</p></div>
+        <div class="benefit-card"><div class="ico">👍</div><h3>Fácil de usar</h3><p>Pensado para quien nunca usó un sistema.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Cómo funciona</div>
+        <h2>Empezar te lleva minutos, no días</h2>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Registrate</h3>
+          <p>Creá tu cuenta gratis con los datos de tu negocio, sin compromiso.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Cargá tus productos</h3>
+          <p>Sumá tu stock, precios y proveedores a tu ritmo, cuando puedas.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Administrá tu negocio</h3>
+          <p>Desde el celular o la compu, vendé, fiá y controlá todo al toque.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section id="planes">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Planes a medida</div>
+        <h2>Pagá solo por lo que tu negocio usa</h2>
+        <p>Stocke al Toque es modular: activás las funciones que necesitás y sumás más cuando tu negocio crece.</p>
+      </div>
+      <div class="plan-box">
+        <h3 style="margin:0 0 8px;font-family:var(--font-display);font-size:18px;">Armá tu plan, módulo por módulo</h3>
+        <p style="color:var(--muted);margin:0;font-size:14px;">Ningún negocio es igual a otro. Por eso vos elegís qué módulos contratar, sin pagar de más por lo que no usás.</p>
+        <div class="plan-modules">
+          <span class="plan-chip">📦 Inventario</span>
+          <span class="plan-chip">💰 Cuentas corrientes</span>
+          <span class="plan-chip">🚚 Proveedores</span>
+          <span class="plan-chip">⏰ Vencimientos</span>
+          <span class="plan-chip">☁️ Respaldos</span>
+          <span class="plan-chip">🏬 Multi-negocio</span>
+        </div>
+        <a href="#cta" class="btn primary">Consultar planes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag">Preguntas frecuentes</div>
+        <h2>Resolvemos tus dudas</h2>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">¿Necesito conocimientos técnicos? <span class="plus">+</span></button>
+          <div class="faq-a"><p>No. Stocke al Toque está pensado para dueños de comercio sin experiencia en sistemas. Si sabés usar WhatsApp, vas a poder usar la plataforma sin problemas.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Funciona desde el celular? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí. Podés usarlo desde el celular del mostrador o desde una computadora, con la misma información actualizada en ambos lugares.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Mis datos están seguros? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí. Tu información se respalda de forma periódica y podés restaurarla en caso de que la necesites, así no dependés de un solo dispositivo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Puedo probarlo antes de contratar? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Sí. Podés empezar gratis y cargar tu negocio real para ver cómo se adapta a tu día a día antes de elegir un plan.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-final">
+        <h2>Dejá el cuaderno. Empezá a controlar tu negocio hoy.</h2>
+        <p>Sumate a los comercios que ya organizaron su stock, sus fiados y sus proveedores con Stocke al Toque.</p>
+        <div class="hero-actions">
+          <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20probar%20Stocke%20al%20Toque" class="btn primary lg">Empezar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke al Toque</div>
+      <p class="muted">Un producto de NWare Soluciones</p>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px;">
+        <a href="mailto:soporte@nwaresoluciones.com" style="color:var(--muted);font-size:12.5px;">soporte@nwaresoluciones.com</a>
+        <a href="https://instagram.com/nware_servicio" target="_blank" style="color:var(--muted);font-size:12.5px;">@nware_servicio</a>
+        <span style="color:var(--muted-soft);font-size:12.5px;">+54 263 494-7776</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#caracteristicas">Características</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">Preguntas</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
