@@ -109,40 +109,9 @@ a{color:inherit;}
 .hero-trust .ico{color:var(--primary);}
 
 .hero-visual{position:relative;animation:fadeUp .7s ease both .2s;}
-.mock-phone{
-  width:min(320px,100%);margin:0 auto;border-radius:28px;border:1px solid var(--line-strong);
-  background:linear-gradient(180deg,var(--bg-secondary),var(--bg));
-  box-shadow:var(--shadow);padding:14px;position:relative;
-}
-.mock-screen{background:var(--surface);border-radius:18px;border:1px solid var(--line);overflow:hidden;}
-.mock-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);}
-.mock-topbar b{font-family:var(--font-display);font-size:14px;}
-.mock-topbar b::first-letter{color:var(--primary);}
-.mock-dot{width:8px;height:8px;border-radius:999px;background:var(--primary);box-shadow:0 0 0 4px var(--primary-glow);}
-.mock-body{padding:12px 14px 16px;display:flex;flex-direction:column;gap:8px;}
-.mock-card{
-  background:var(--bg-secondary);border:1px solid var(--line);border-radius:var(--radius-md);
-  padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;
-}
-.mock-card .name{font-weight:600;}
-.mock-card .sub{color:var(--muted-soft);font-size:11px;}
-.mock-pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;}
-.mock-pill.ok{background:rgba(92,191,74,.14);color:var(--primary-light);}
-.mock-pill.warn{background:rgba(255,213,74,.14);color:var(--accent);}
-.mock-pill.low{background:rgba(249,112,102,.14);color:var(--danger);}
-.mock-total{margin-top:4px;border-radius:var(--radius-sm);background:var(--primary);color:#0A0E14;text-align:center;
-  font-family:var(--font-display);font-weight:800;padding:11px;font-size:14px;}
-.float-card{
-  position:absolute;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--radius-md);
-  padding:10px 14px;box-shadow:var(--shadow);font-size:12.5px;display:flex;align-items:center;gap:8px;
-  animation:floaty 4.5s ease-in-out infinite;
-}
-.float-card b{font-family:var(--font-display);}
-.float-1{top:-6px;right:-10px;color:var(--primary-light);animation-delay:.2s;}
-.float-2{bottom:36px;left:-22px;color:var(--accent);animation-delay:1s;}
+.hero-img{width:min(320px,100%);display:block;margin:0 auto;border-radius:24px;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
 /* ---- section shell ---- */
 section{padding:64px 0;}
@@ -287,7 +256,7 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
 
 <header class="topbar">
   <div class="topbar-inner container">
-    <a href="#top" class="brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke<span class="dot">·</span>al Toque</a>
+    <a href="#top" class="brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke al Toque</a>
     <nav class="nav-links">
       <a href="#caracteristicas">Características</a>
       <a href="#como-funciona">Cómo funciona</a>
@@ -320,19 +289,7 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
         </div>
       </div>
       <div class="hero-visual">
-        <div class="mock-phone">
-          <div class="mock-screen">
-            <div class="mock-topbar"><b>Stocke al Toque</b><span class="mock-dot"></span></div>
-            <div class="mock-body">
-              <div class="mock-card"><div><div class="name">Coca Cola 1.5L</div><div class="sub">Stock: 18 un.</div></div><span class="mock-pill ok">OK</span></div>
-              <div class="mock-card"><div><div class="name">Yerba Playadito 1kg</div><div class="sub">Vence en 4 días</div></div><span class="mock-pill warn">Por vencer</span></div>
-              <div class="mock-card"><div><div class="name">Aceite Natura 900ml</div><div class="sub">Stock: 2 un.</div></div><span class="mock-pill low">Bajo</span></div>
-              <div class="mock-total">Total venta: $4.850</div>
-            </div>
-          </div>
-        </div>
-        <div class="float-card float-1">📒<b>Fiado registrado</b></div>
-        <div class="float-card float-2">☁️<b>Respaldo al día</b></div>
+        <img src="cel.png" alt="App Stocke al Toque" class="hero-img">
       </div>
     </div>
   </section>
