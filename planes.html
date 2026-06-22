@@ -139,15 +139,15 @@ section{padding:64px 0;}
 
 /* ---- pricing grid ---- */
 .pricing-grid{
-  display:grid;gap:20px;
-  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-  align-items:start;
+  display:grid;gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  align-items:stretch;
 }
 
 /* ---- plan card ---- */
 .plan-card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:28px;display:flex;flex-direction:column;gap:0;
+  padding:26px 22px;display:flex;flex-direction:column;gap:0;height:100%;
   transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
   position:relative;overflow:hidden;
 }
@@ -165,58 +165,39 @@ section{padding:64px 0;}
   letter-spacing:.05em;text-transform:uppercase;border-radius:999px;
   padding:4px 12px;margin-bottom:14px;width:fit-content;
 }
+.plan-badge svg{width:12px;height:12px;display:inline-block;flex-shrink:0;}
 
-.plan-name{font-family:var(--font-display);font-size:20px;font-weight:800;margin:0 0 4px;}
-.plan-tagline{color:var(--muted);font-size:13px;margin:0 0 20px;}
+.plan-name{font-family:var(--font-display);font-size:19px;font-weight:800;margin:0 0 4px;}
+.plan-tagline{color:var(--muted);font-size:12.5px;margin:0 0 18px;min-height:32px;}
 
 .plan-price{display:flex;align-items:flex-end;gap:6px;margin-bottom:6px;}
-.plan-price .amount{font-family:var(--font-display);font-size:clamp(32px,5vw,40px);font-weight:800;line-height:1;}
-.plan-price .currency{font-size:18px;font-weight:700;color:var(--muted);margin-bottom:4px;}
+.plan-price .amount{font-family:var(--font-display);font-size:clamp(30px,5vw,38px);font-weight:800;line-height:1;}
+.plan-price .currency{font-size:17px;font-weight:700;color:var(--muted);margin-bottom:4px;}
 .plan-price .period{font-size:13px;color:var(--muted-soft);margin-bottom:5px;}
-.plan-price-free{font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--primary);margin-bottom:6px;}
-.plan-price-note{font-size:12px;color:var(--muted-soft);margin:0 0 24px;}
+.plan-price-free{font-family:var(--font-display);font-size:30px;font-weight:800;color:var(--primary);margin-bottom:6px;}
+.plan-price-note{font-size:11.5px;color:var(--muted-soft);margin:0 0 20px;}
 
 .plan-divider{border:none;border-top:1px solid var(--line);margin:20px 0;}
 
-.plan-features{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:10px;}
-.plan-features li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--muted);}
-.plan-features li .chk{color:var(--primary);font-size:14px;flex-shrink:0;font-weight:800;margin-top:1px;}
+.plan-features{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:9px;flex:1;}
+.plan-features li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--muted);line-height:1.45;}
+.plan-features li .feat-ico{
+  color:var(--primary);flex-shrink:0;margin-top:1px;
+  width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;
+}
+.plan-features li .feat-ico svg{width:14px;height:14px;display:block;}
 .plan-features li strong{color:var(--text);font-weight:600;}
 
 .plan-limit{
-  display:inline-flex;align-items:center;gap:6px;
+  display:inline-flex;align-items:center;gap:7px;
   border:1px solid var(--line-strong);background:var(--bg-secondary);
-  border-radius:var(--radius-sm);padding:8px 14px;font-size:12.5px;
-  color:var(--muted);margin-bottom:20px;width:100%;
+  border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;
+  color:var(--muted);margin-bottom:18px;width:100%;
 }
-.plan-limit .ico{font-size:14px;}
+.plan-limit .ico{flex-shrink:0;width:15px;height:15px;display:inline-flex;color:var(--primary-light);}
+.plan-limit .ico svg{width:15px;height:15px;display:block;}
 
-/* ---- soluciones card ---- */
-.soluciones-section{margin-top:56px;}
-.soluciones-card{
-  background:linear-gradient(135deg,rgba(255,213,74,.1),rgba(92,191,74,.06));
-  border:1px solid rgba(255,213,74,.35);border-radius:var(--radius-lg);
-  padding:44px;display:grid;gap:32px;align-items:center;
-}
-.soluciones-card .sol-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,213,74,.18);color:var(--accent);
-  font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
-  border-radius:999px;padding:4px 12px;margin-bottom:14px;width:fit-content;
-  border:1px solid rgba(255,213,74,.3);
-}
-.soluciones-card h3{
-  font-family:var(--font-display);font-size:clamp(20px,3vw,28px);font-weight:800;
-  margin:0 0 10px;
-}
-.soluciones-card p{color:var(--muted);font-size:15px;margin:0 0 0;}
-.sol-features{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
-.sol-features li{display:flex;align-items:flex-start;gap:9px;font-size:14px;}
-.sol-features li .chk{color:var(--accent);font-size:14px;flex-shrink:0;font-weight:800;margin-top:1px;}
-.sol-price-block{text-align:center;}
-.sol-price{font-family:var(--font-display);font-size:52px;font-weight:800;color:var(--accent);line-height:1;}
-.sol-price sup{font-size:22px;vertical-align:top;margin-top:10px;}
-.sol-price-period{color:var(--muted);font-size:13px;margin:4px 0 20px;}
+.plan-card .btn{margin-top:auto;}
 
 /* ---- cta final ---- */
 .cta-final{
@@ -239,14 +220,16 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
 
 @media (min-width:768px){
   .nav-links{display:flex;}
-  .soluciones-card{grid-template-columns:1.4fr .6fr;}
-  .pricing-grid{grid-template-columns:repeat(3,1fr);}
+  #panel-clasicos .pricing-grid{grid-template-columns:repeat(4,1fr);}
+  #panel-equipos .pricing-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media (max-width:1024px) and (min-width:768px){
+  #panel-clasicos .pricing-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media (max-width:767px){
   section{padding:48px 0;}
   .hero-planes{padding:40px 0 28px;}
-  .soluciones-card{padding:28px;}
-  .sol-price-block{border-top:1px solid rgba(255,213,74,.2);padding-top:20px;}
+  .pricing-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -275,7 +258,7 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
   <!-- HERO -->
   <section class="hero-planes">
     <div class="container">
-      <span class="eyebrow">💳 Planes y precios</span>
+      <span class="eyebrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Planes y precios</span>
       <h1>Elegí el plan para tu <span class="hl">negocio</span></h1>
       <p class="lead">Arrancá gratis y crecé cuando lo necesitás. Sin sorpresas, sin cargos ocultos.</p>
     </div>
@@ -286,10 +269,10 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
     <div class="switch-wrap">
       <div class="switch-track" role="tablist">
         <button class="switch-btn active" role="tab" id="tab-clasicos" aria-controls="panel-clasicos" aria-selected="true" onclick="switchTab('clasicos')">
-          🏪 Planes Clásicos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v11H3z"/><path d="M9 14h6"/></svg>Planes Clásicos
         </button>
         <button class="switch-btn" role="tab" id="tab-equipos" aria-controls="panel-equipos" aria-selected="false" onclick="switchTab('equipos')">
-          👥 Planes Equipos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Planes Equipos
         </button>
       </div>
     </div>
@@ -308,11 +291,11 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
             <p class="plan-tagline">Para empezar a organizar, sin costo.</p>
             <div class="plan-price-free">$0</div>
             <p class="plan-price-note">Para siempre gratis</p>
-            <div class="plan-limit"><span class="ico">📦</span> Hasta 50 productos · 1 usuario</div>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></span> Hasta 50 productos · 1 usuario</div>
             <ul class="plan-features">
-              <li><span class="chk">✓</span><span><strong>Base de datos</strong> de productos</span></li>
-              <li><span class="chk">✓</span><span><strong>Control de precios</strong></span></li>
-              <li><span class="chk">✓</span><span>1 usuario incluido</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><span><strong>Base de datos</strong> de productos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><strong>Control de precios</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg></span><span>1 usuario incluido</span></li>
             </ul>
             <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20plan%20Gratuito" class="btn full">Empezar gratis</a>
           </div>
@@ -327,21 +310,22 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
               <span class="period">/mes</span>
             </div>
             <p class="plan-price-note">≈ menos de lo que cuesta un cuaderno</p>
-            <div class="plan-limit"><span class="ico">📦</span> Hasta 150 productos · 1 usuario</div>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.3 7 12 12l8.7-5"/><path d="M12 22V12"/></svg></span> Hasta 150 productos · 1 usuario</div>
             <ul class="plan-features">
-              <li><span class="chk">✓</span><span>Todo lo del plan Gratuito</span></li>
-              <li><span class="chk">✓</span><span><strong>Control de stock</strong></span></li>
-              <li><span class="chk">✓</span><span><strong>Control de lotes y vencimientos</strong></span></li>
-              <li><span class="chk">✓</span><span><strong>Código de barras</strong></span></li>
-              <li><span class="chk">✓</span><span>Función para <strong>cargar pedidos</strong></span></li>
-              <li><span class="chk">✓</span><span><strong>Registro de movimientos</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><span><strong>Base de datos</strong> de productos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><strong>Control de precios</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2.41 12.4A2 2 0 0 1 2 11.01V4a2 2 0 0 1 2-2h7.01c.53 0 1.04.21 1.42.59l8.16 8.18a2 2 0 0 1 0 2.83Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span><strong>Control de stock</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span><strong>Control de lotes y vencimientos</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><line x1="7" y1="5" x2="7" y2="19"/><line x1="11" y1="5" x2="11" y2="19"/><line x1="15" y1="5" x2="15" y2="19"/><line x1="18" y1="5" x2="18" y2="19"/></svg></span><span><strong>Código de barras</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span>Función para <strong>cargar pedidos</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8 13 13.7l-3-3L4.3 16.4"/></svg></span><span><strong>Registro de movimientos</strong></span></li>
             </ul>
             <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20plan%20Basico%20Clasico" class="btn full">Elegir Básico</a>
           </div>
 
           <!-- Plus -->
           <div class="plan-card featured">
-            <span class="plan-badge">⭐ Más popular</span>
+            <span class="plan-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9.5 8.5 2 9.3l5.7 4.9L6 21l6-3.9L18 21l-1.7-6.8L22 9.3l-7.5-.8z"/></svg> Más popular</span>
             <p class="plan-name">Plus</p>
             <p class="plan-tagline">Todo lo que un comercio en crecimiento necesita.</p>
             <div class="plan-price">
@@ -350,48 +334,47 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
               <span class="period">/mes</span>
             </div>
             <p class="plan-price-note">Sin límite de productos</p>
-            <div class="plan-limit"><span class="ico">♾️</span> Productos ilimitados · 2 usuarios</div>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/></svg></span> Productos ilimitados · 2 usuarios</div>
             <ul class="plan-features">
-              <li><span class="chk">✓</span><span>Todo lo del plan Básico</span></li>
-              <li><span class="chk">✓</span><span><strong>2 usuarios</strong> incluidos</span></li>
-              <li><span class="chk">✓</span><span><strong>Cuentas corrientes</strong> (fiados)</span></li>
-              <li><span class="chk">✓</span><span><strong>Registro de proveedores y pedidos</strong></span></li>
-              <li><span class="chk">✓</span><span><strong>Backups de seguridad</strong></span></li>
-              <li><span class="chk">✓</span><span><strong>Modo ventas</strong></span></li>
-              <li><span class="chk">✓</span><span><strong>Comprobantes en PDF</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><span>Base de datos, precios, control de stock, lotes, código de barras, pedidos y movimientos del plan <strong>Básico</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong>2 usuarios</strong> incluidos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="7" cy="15" r="1"/></svg></span><span><strong>Cuentas corrientes</strong> (fiados)</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h3l4 4v4h-7Z"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></span><span><strong>Registro de proveedores y pedidos</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></span><span><strong>Backups de seguridad</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span>Modo ventas</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 18h3"/></svg></span><span>Comprobantes en PDF</span></li>
             </ul>
             <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20plan%20Plus%20Clasico" class="btn primary full">Elegir Plus</a>
           </div>
 
-        </div>
-
-        <!-- Plan Soluciones -->
-        <div class="soluciones-section">
-          <div class="soluciones-card">
-            <div>
-              <span class="sol-badge">🔧 Personalizado</span>
-              <h3>Plan Soluciones</h3>
-              <p style="margin-bottom:20px;">El plan Plus adaptado a la medida de tu negocio. Pedí las funciones que necesitás bajo demanda, con prioridad por encima de las actualizaciones de los demás planes.</p>
-              <ul class="sol-features">
-                <li><span class="chk">✓</span><span>Todo lo del plan <strong>Plus</strong></span></li>
-                <li><span class="chk">✓</span><span>La plataforma se <strong>ajusta a tu negocio</strong></span></li>
-                <li><span class="chk">✓</span><span>Funciones nuevas <strong>bajo demanda</strong></span></li>
-                <li><span class="chk">✓</span><span><strong>Prioridad máxima</strong> en soporte y actualizaciones</span></li>
-                <li><span class="chk">✓</span><span>Atención directa con el equipo de <strong>NWare</strong></span></li>
-              </ul>
+          <!-- Plan Soluciones -->
+          <div class="plan-card">
+            <span class="plan-badge" style="background:rgba(255,213,74,.18);color:var(--accent);border:1px solid rgba(255,213,74,.3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></svg> Personalizado</span>
+            <p class="plan-name">Soluciones</p>
+            <p class="plan-tagline">El plan Plus a medida de tu negocio, con prioridad sobre los demás planes.</p>
+            <div class="plan-price">
+              <span class="currency">USD</span>
+              <span class="amount">30</span>
+              <span class="period">/mes</span>
             </div>
-            <div class="sol-price-block">
-              <div class="sol-price"><sup>USD</sup>30</div>
-              <p class="sol-price-period">por mes</p>
-              <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20Plan%20Soluciones" class="btn lg" style="background:var(--accent);border-color:var(--accent);color:#0A0E14;box-shadow:0 8px 28px -16px rgba(255,213,74,.5);width:100%;justify-content:center;">Consultar ahora</a>
-            </div>
+            <p class="plan-price-note">Funciones a pedido</p>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></span> A tu medida</div>
+            <ul class="plan-features">
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span>Cuentas, proveedores, backups, modo ventas y PDF del plan <strong>Plus</strong></span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span>La plataforma se <strong>ajusta a tu negocio</strong></span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span><span>Funciones nuevas <strong>bajo demanda</strong></span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6Z"/></svg></span><span><strong>Prioridad máxima</strong> en soporte y actualizaciones</span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></span><span>Atención directa con el equipo de <strong>NWare</strong></span></li>
+            </ul>
+            <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20Plan%20Soluciones" class="btn full" style="background:var(--accent);border-color:var(--accent);color:#0A0E14;">Consultar ahora</a>
           </div>
+
         </div>
       </div>
 
       <!-- EQUIPOS -->
       <div class="plans-panel" id="panel-equipos" role="tabpanel" aria-labelledby="tab-equipos">
-        <div class="pricing-grid" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr));max-width:760px;margin:0 auto;">
+        <div class="pricing-grid">
 
           <!-- Básico Equipos -->
           <div class="plan-card">
@@ -403,21 +386,21 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
               <span class="period">/mes</span>
             </div>
             <p class="plan-price-note">Más de un usuario, mismo control</p>
-            <div class="plan-limit"><span class="ico">👥</span> Hasta 150 productos · 5 usuarios</div>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Hasta 150 productos · 5 usuarios</div>
             <ul class="plan-features">
-              <li><span class="chk">✓</span><span><strong>5 usuarios</strong> incluidos</span></li>
-              <li><span class="chk">✓</span><span>Control de stock completo</span></li>
-              <li><span class="chk">✓</span><span>Control de lotes y vencimientos</span></li>
-              <li><span class="chk">✓</span><span>Código de barras</span></li>
-              <li><span class="chk">✓</span><span>Carga de pedidos</span></li>
-              <li><span class="chk">✓</span><span>Registro de movimientos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong>5 usuarios</strong> incluidos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2.41 12.4A2 2 0 0 1 2 11.01V4a2 2 0 0 1 2-2h7.01c.53 0 1.04.21 1.42.59l8.16 8.18a2 2 0 0 1 0 2.83Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span>Control de stock completo</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span>Control de lotes y vencimientos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><line x1="7" y1="5" x2="7" y2="19"/><line x1="11" y1="5" x2="11" y2="19"/><line x1="15" y1="5" x2="15" y2="19"/><line x1="18" y1="5" x2="18" y2="19"/></svg></span><span>Código de barras</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span>Carga de pedidos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8 13 13.7l-3-3L4.3 16.4"/></svg></span><span>Registro de movimientos</span></li>
             </ul>
             <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20plan%20Basico%20Equipos" class="btn full">Elegir Básico Equipos</a>
           </div>
 
           <!-- Plus Equipos -->
           <div class="plan-card featured">
-            <span class="plan-badge">⭐ Más completo</span>
+            <span class="plan-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 9.5 8.5 2 9.3l5.7 4.9L6 21l6-3.9L18 21l-1.7-6.8L22 9.3l-7.5-.8z"/></svg> Más completo</span>
             <p class="plan-name">Plus Equipos</p>
             <p class="plan-tagline">El sistema completo para equipos que necesitan más.</p>
             <div class="plan-price">
@@ -426,42 +409,41 @@ footer .muted{color:var(--muted-soft);font-size:12.5px;}
               <span class="period">/mes</span>
             </div>
             <p class="plan-price-note">Sin límite de productos</p>
-            <div class="plan-limit"><span class="ico">♾️</span> Productos ilimitados · 10 usuarios</div>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/></svg></span> Productos ilimitados · 10 usuarios</div>
             <ul class="plan-features">
-              <li><span class="chk">✓</span><span><strong>10 usuarios</strong> incluidos</span></li>
-              <li><span class="chk">✓</span><span>Todo del plan Básico Equipos</span></li>
-              <li><span class="chk">✓</span><span>Cuentas corrientes (fiados)</span></li>
-              <li><span class="chk">✓</span><span>Registro de proveedores y pedidos</span></li>
-              <li><span class="chk">✓</span><span>Backups de seguridad</span></li>
-              <li><span class="chk">✓</span><span>Modo ventas</span></li>
-              <li><span class="chk">✓</span><span>Comprobantes en PDF</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><strong>10 usuarios</strong> incluidos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2.41 12.4A2 2 0 0 1 2 11.01V4a2 2 0 0 1 2-2h7.01c.53 0 1.04.21 1.42.59l8.16 8.18a2 2 0 0 1 0 2.83Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span>Stock, lotes, código de barras, pedidos y movimientos del plan <strong>Básico Equipos</strong></span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="7" cy="15" r="1"/></svg></span><span>Cuentas corrientes (fiados)</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h3l4 4v4h-7Z"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></span><span>Registro de proveedores y pedidos</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Backups de seguridad</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span>Modo ventas</span></li>
+              <li><span class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 18h3"/></svg></span><span>Comprobantes en PDF</span></li>
             </ul>
             <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20plan%20Plus%20Equipos" class="btn primary full">Elegir Plus Equipos</a>
           </div>
 
-        </div>
-
-        <!-- Plan Soluciones (también en equipos) -->
-        <div class="soluciones-section">
-          <div class="soluciones-card">
-            <div>
-              <span class="sol-badge">🔧 Personalizado</span>
-              <h3>Plan Soluciones</h3>
-              <p style="margin-bottom:20px;">El plan Plus adaptado a la medida de tu negocio. Pedí las funciones que necesitás bajo demanda, con prioridad por encima de las actualizaciones de los demás planes.</p>
-              <ul class="sol-features">
-                <li><span class="chk">✓</span><span>Todo lo del plan <strong>Plus</strong></span></li>
-                <li><span class="chk">✓</span><span>La plataforma se <strong>ajusta a tu negocio</strong></span></li>
-                <li><span class="chk">✓</span><span>Funciones nuevas <strong>bajo demanda</strong></span></li>
-                <li><span class="chk">✓</span><span><strong>Prioridad máxima</strong> en soporte y actualizaciones</span></li>
-                <li><span class="chk">✓</span><span>Atención directa con el equipo de <strong>NWare</strong></span></li>
-              </ul>
+          <!-- Plan Soluciones -->
+          <div class="plan-card">
+            <span class="plan-badge" style="background:rgba(255,213,74,.18);color:var(--accent);border:1px solid rgba(255,213,74,.3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></svg> Personalizado</span>
+            <p class="plan-name">Soluciones</p>
+            <p class="plan-tagline">El plan Plus a medida de tu negocio, con prioridad sobre los demás planes.</p>
+            <div class="plan-price">
+              <span class="currency">USD</span>
+              <span class="amount">30</span>
+              <span class="period">/mes</span>
             </div>
-            <div class="sol-price-block">
-              <div class="sol-price"><sup>USD</sup>30</div>
-              <p class="sol-price-period">por mes</p>
-              <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20Plan%20Soluciones" class="btn lg" style="background:var(--accent);border-color:var(--accent);color:#0A0E14;box-shadow:0 8px 28px -16px rgba(255,213,74,.5);width:100%;justify-content:center;">Consultar ahora</a>
-            </div>
+            <p class="plan-price-note">Funciones a pedido</p>
+            <div class="plan-limit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></span> A tu medida</div>
+            <ul class="plan-features">
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.6a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span>Cuentas, proveedores, backups, modo ventas y PDF del plan <strong>Plus Equipos</strong></span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><span>La plataforma se <strong>ajusta a tu negocio</strong></span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span><span>Funciones nuevas <strong>bajo demanda</strong></span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6Z"/></svg></span><span><strong>Prioridad máxima</strong> en soporte y actualizaciones</span></li>
+              <li><span class="feat-ico" style="color:var(--accent);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></span><span>Atención directa con el equipo de <strong>NWare</strong></span></li>
+            </ul>
+            <a href="mailto:soporte@nwaresoluciones.com?subject=Quiero%20el%20Plan%20Soluciones" class="btn full" style="background:var(--accent);border-color:var(--accent);color:#0A0E14;">Consultar ahora</a>
           </div>
+
         </div>
       </div>
 
