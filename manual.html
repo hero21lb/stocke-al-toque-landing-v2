@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F1117">
+<title>Manual de uso — Stocke al Toque</title>
+<meta name="description" content="Manual de usuario de Stocke al Toque. Aprendé a usar todas las funcionalidades de la plataforma.">
+<link rel="icon" href="stock-al-toque-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#5CBF4A;
+  --primary-dark:#4DA83D;
+  --primary-light:#7DD96A;
+  --primary-glow:rgba(92,191,74,.22);
+  --accent:#FFD54A;
+  --accent-glow:rgba(255,213,74,.16);
+  --bg:#0F1117;
+  --bg-secondary:#181C24;
+  --surface:#1E232E;
+  --surface-hover:#252B38;
+  --line:#2A2F3A;
+  --line-strong:#383E4A;
+  --text:#FFFFFF;
+  --muted:#AAB2C0;
+  --muted-soft:#6B7280;
+  --shadow:0 22px 60px -28px rgba(0,0,0,.75);
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-display:"DM Sans","Inter",sans-serif;
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:20px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{background:var(--bg);-webkit-text-size-adjust:100%;}
+body{
+  margin:0;min-height:100dvh;
+  background:linear-gradient(180deg,#0F1117 0%,#11151D 52%,#0F1117 100%);
+  color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--primary-light);text-decoration:none;}
+a:hover{text-decoration:underline;}
+::selection{background:var(--primary);color:#0A0E14;}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px;}
+
+.container{width:min(860px,100%);margin:0 auto;padding:0 20px;}
+
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,17,23,.86);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 20px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:18px;font-weight:700;text-decoration:none;color:var(--text);}
+.brand-mark{width:32px;height:32px;border-radius:9px;flex-shrink:0;object-fit:contain;}
+.topbar-cta{display:flex;align-items:center;gap:10px;}
+.btn{
+  min-height:42px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);
+  background:var(--bg-secondary);color:var(--text);display:inline-flex;align-items:center;
+  justify-content:center;gap:7px;padding:0 18px;font-size:14px;font-weight:700;
+  text-decoration:none;transition:transform .18s ease,background .18s ease,border-color .18s ease;
+  cursor:pointer;font-family:inherit;user-select:none;
+}
+.btn:hover{transform:translateY(-1px);border-color:var(--primary);color:var(--primary-light);background:var(--surface-hover);text-decoration:none;}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:#0A0E14;box-shadow:0 8px 28px -16px var(--primary);}
+.btn.primary:hover{background:var(--primary-light);color:#0A0E14;}
+
+/* ---- manual ---- */
+.manual-page{padding:48px 0 64px;}
+.manual-header{margin-bottom:44px;}
+.manual-header h1{font-family:var(--font-display);font-size:clamp(26px,4vw,36px);font-weight:800;margin:0 0 10px;}
+.manual-header p{color:var(--muted);font-size:14px;margin:0;}
+.manual-header .sep{display:inline-block;margin:0 10px;color:var(--muted-soft);}
+.manual-header .print-btn{cursor:pointer;}
+
+.manual-toc{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:24px 28px;margin-bottom:40px;
+}
+.manual-toc h2{font-family:var(--font-display);font-size:16px;font-weight:700;margin:0 0 14px;color:var(--primary-light);}
+.manual-toc ol{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;}
+.manual-toc li{font-size:14px;}
+.manual-toc a{color:var(--muted);}
+.manual-toc a:hover{color:var(--primary-light);}
+
+.manual-section{margin-bottom:40px;}
+.manual-section h2{font-family:var(--font-display);font-size:20px;font-weight:700;margin:0 0 16px;color:var(--primary-light);padding-bottom:8px;border-bottom:1px solid var(--line);}
+.manual-section h3{font-family:var(--font-display);font-size:16px;font-weight:600;margin:20px 0 10px;color:var(--text);}
+.manual-section p,.manual-section li{color:var(--muted);font-size:14.5px;margin:0 0 10px;}
+.manual-section ul,.manual-section ol{padding:0 0 0 22px;margin:0 0 14px;}
+.manual-section li{margin-bottom:6px;}
+.manual-section strong{color:var(--text);font-weight:600;}
+.manual-section code{
+  background:var(--bg-secondary);border:1px solid var(--line);border-radius:5px;
+  padding:1px 8px;font-size:13px;color:var(--accent);font-family:"JetBrains Mono","Fira Code",monospace;
+}
+.manual-section .tag{
+  display:inline-block;background:var(--primary-glow);color:var(--primary-light);
+  font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;text-transform:uppercase;
+  letter-spacing:.5px;margin-right:6px;
+}
+
+.manual-step{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:20px 24px;margin-bottom:14px;
+}
+.manual-step .step-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:50%;background:var(--primary);
+  color:#0A0E14;font-size:13px;font-weight:800;flex-shrink:0;margin-right:10px;
+}
+.manual-step .step-title{display:flex;align-items:center;gap:0;font-weight:600;color:var(--text);margin-bottom:8px;}
+.manual-step p{font-size:14px;margin:0 0 4px 38px;}
+
+.manual-img{
+  display:block;max-width:100%;border-radius:var(--radius-md);
+  border:1px solid var(--line);margin:16px 0;width:auto;height:auto;
+}
+.manual-img-wrap{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:12px;margin:16px 0;text-align:center;
+}
+.manual-img-wrap img{max-width:100%;border-radius:6px;display:block;margin:0 auto;}
+.manual-img-wrap .caption{color:var(--muted-soft);font-size:12.5px;margin-top:8px;display:block;}
+
+/* ---- tips ---- */
+.manual-tip{
+  background:rgba(92,191,74,.08);border:1px solid var(--primary-glow);border-radius:var(--radius-sm);
+  padding:14px 18px;margin:16px 0;font-size:14px;color:var(--muted);
+}
+.manual-tip strong{color:var(--primary-light);}
+
+.manual-warn{
+  background:rgba(255,213,74,.08);border:1px solid var(--accent-glow);border-radius:var(--radius-sm);
+  padding:14px 18px;margin:16px 0;font-size:14px;color:var(--muted);
+}
+.manual-warn strong{color:var(--accent);}
+
+footer{border-top:1px solid var(--line);padding:36px 0;}
+.footer-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;}
+.footer-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--text);text-decoration:none;}
+footer .muted{color:var(--muted-soft);font-size:12.5px;}
+.footer-links{display:flex;gap:18px;font-size:13px;color:var(--muted);}
+.footer-links a{color:var(--muted);}
+.footer-links a:hover{color:var(--primary-light);}
+
+/* ---- print ---- */
+@media print{
+  @page{margin:.8in .6in;}
+  body{background:#fff!important;color:#000!important;font-size:11pt;line-height:1.5;}
+  .topbar,.topbar-cta,.print-btn,.footer-links{display:none!important;}
+  .btn{display:none!important;}
+  .container{width:100%;max-width:100%;padding:0;}
+  .manual-page{padding:0;}
+  .manual-header h1{font-size:20pt;color:#000!important;}
+  .manual-header p{color:#555!important;}
+  .manual-toc{border:1px solid #ccc;background:#f9f9f9;}
+  .manual-toc a{color:#333!important;}
+  .manual-section h2{color:#2a7d2a!important;border-bottom-color:#ccc;}
+  .manual-section h3{color:#000!important;}
+  .manual-section p,.manual-section li{color:#333!important;}
+  .manual-section strong{color:#000!important;}
+  .manual-section code{background:#f0f0f0;border-color:#ddd;color:#080!important;}
+  .manual-step{background:#f9f9f9;border-color:#ddd;break-inside:avoid;}
+  .manual-step .step-num{background:#2a7d2a;color:#fff;}
+  .manual-step .step-title{color:#000!important;}
+  .manual-img-wrap{background:#f5f5f5;border-color:#ddd;break-inside:avoid;}
+  .manual-img-wrap img{max-width:80%!important;}
+  .manual-tip{background:#eef9ee;border-color:#8bc88b;color:#333!important;}
+  .manual-tip strong{color:#2a7d2a!important;}
+  .manual-warn{background:#fff9e6;border-color:#e6c94d;color:#333!important;}
+  .manual-warn strong{color:#b8860b!important;}
+  footer{background:#f5f5f5;border-top-color:#ccc;break-inside:avoid;}
+  .footer-brand{color:#333!important;}
+  footer .muted{color:#888!important;}
+  a{color:#2a7d2a!important;text-decoration:underline!important;}
+  .brand{color:#000!important;}
+}
+
+@media print and (prefers-color-scheme:dark){
+  body{background:#fff!important;color:#000!important;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner container">
+    <a href="/" class="brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke al Toque</a>
+    <div class="topbar-cta">
+      <button class="btn primary print-btn" onclick="window.print()">Imprimir / PDF</button>
+      <a href="https://sat.nwaresoluciones.com/planes" class="btn">Probar gratis</a>
+    </div>
+  </div>
+</header>
+
+<main class="manual-page">
+  <div class="container">
+
+    <div class="manual-header">
+      <h1>Manual de uso</h1>
+      <p>Versión <span id="version">2.0</span> <span class="sep">·</span> Actualizado: <span id="fecha"></span> <span class="sep">·</span> <button class="btn print-btn" onclick="window.print()" style="min-height:auto;padding:4px 14px;font-size:12px;">Imprimir / PDF</button></p>
+    </div>
+
+    <nav class="manual-toc">
+      <h2>Contenido</h2>
+      <ol>
+        <li><a href="#intro">1. Introducción</a></li>
+        <li><a href="#instalacion">2. Instalación de la PWA</a></li>
+        <li><a href="#registro">3. Registro del dispositivo</a></li>
+        <li><a href="#ventas">4. Pantalla de ventas</a></li>
+        <li><a href="#productos">5. Gestión de productos</a></li>
+        <li><a href="#stock">6. Stock y movimientos</a></li>
+        <li><a href="#cuentas">7. Cuentas (fiados y deudas)</a></li>
+        <li><a href="#proveedores">8. Proveedores</a></li>
+        <li><a href="#configuracion">9. Configuración</a></li>
+        <li><a href="#backups">10. Copias de seguridad</a></li>
+        <li><a href="#soporte">11. Soporte técnico</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1 -->
+    <section class="manual-section" id="intro">
+      <h2>1. Introducción</h2>
+      <p><strong>Stocke al Toque</strong> es un sistema de gestión de stock, ventas y cuentas corrientes, diseñado para pequeños comercios de Argentina. Funciona como una <strong>Progressive Web App (PWA)</strong>: se accede desde el navegador pero puede instalarse en el celular, tablet o PC como si fuera una aplicación nativa.</p>
+
+      <div class="manual-img-wrap">
+        <img src="stock-al-toque-logo.png" alt="Stocke al Toque" style="max-width:180px;">
+        <span class="caption">Logotipo de Stocke al Toque</span>
+      </div>
+
+      <h3>¿Qué podés hacer?</h3>
+      <ul>
+        <li>Vender productos con carrito, escáner de código de barras y comprobante PDF.</li>
+        <li>Controlar el stock con lotes y fechas de vencimiento (FEFO).</li>
+        <li>Manejar cuentas corrientes: <strong>fiados</strong> (clientes te deben) y <strong>deudas</strong> (le debés a proveedores).</li>
+        <li>Gestionar proveedores con calendario semanal de visitas y pedidos planificados.</li>
+        <li>Ajustar márgenes de ganancia, redondeo y categorías A/B (IVA).</li>
+        <li>Importar y exportar productos en Excel o CSV.</li>
+      </ul>
+
+      <h3>Requisitos</h3>
+      <ul>
+        <li>Navegador moderno (Chrome 90+, Edge 90+, Safari 14+).</li>
+        <li>Conexión a Internet para operar (los archivos estáticos se cachean sin conexión).</li>
+        <li>Un token de registro provisto por el administrador del negocio.</li>
+      </ul>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Stocke al Toque está optimizado para celulares y tablets. La interfaz se adapta automáticamente al tamaño de pantalla.
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="manual-section" id="instalacion">
+      <h2>2. Instalación de la PWA</h2>
+      <p>No requiere descargar nada de una tienda. Simplemente ingresá a la URL de tu negocio desde el navegador.</p>
+
+      <h3>En Android (Chrome)</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Abrí Chrome e ingresá a la URL de tu negocio</div>
+        <p>Ej: <code>tunegocio.stockealtoke.com</code></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Tocá el menú de Chrome (⋮) y seleccioná <strong>"Instalar aplicación"</strong></div>
+        <p>También puede aparecer un banner en la parte inferior con la opción <strong>"Instalar"</strong>.</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Confirmá la instalación</div>
+        <p>Se creará un ícono en la pantalla de inicio con el nombre <strong>"Stocke"</strong>.</p>
+      </div>
+
+      <h3>En iPhone / iPad (Safari)</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Abrí Safari e ingresá a la URL de tu negocio</div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Tocá el ícono <strong>Compartir</strong> (📤) y desplazate hacia abajo</div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Seleccioná <strong>"Agregar a pantalla de inicio"</strong></div>
+        <p>Personalizá el nombre si querés y tocá <strong>"Agregar"</strong>.</p>
+      </div>
+
+      <h3>En PC (Chrome / Edge)</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Abrí Chrome o Edge e ingresá a la URL del negocio</div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Hacé clic en el ícono de instalación (➕) en la barra de dirección</div>
+        <p>O andá al menú → <strong>"Instalar Stocke al Toque"</strong>.</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Confirmá la instalación</div>
+        <p>La app se abrirá en su propia ventana, sin la interfaz del navegador.</p>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/instalar.webp" alt="Instalación de la PWA">
+        <span class="caption">Instalación de Stocke al Toque en Android</span>
+      </div>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Una vez instalada, la PWA se abre más rápido y ocupa menos espacio que una app nativa. Los archivos estáticos (CSS, JS, imágenes) funcionan sin conexión.
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="manual-section" id="registro">
+      <h2>3. Registro del dispositivo</h2>
+      <p>A diferencia de las apps tradicionales, Stocke al Toque no usa usuario ni contraseña. Cada <strong>dispositivo</strong> (celular, tablet, PC) se registra con un token único. Esto permite tener varios puntos de venta en un mismo negocio.</p>
+
+      <h3>Obtener el token de registro</h3>
+      <p>El administrador del negocio te va a proporcionar un <strong>código de registro</strong> (master key o registration key). Es una clave alfanumérica que se ingresa una sola vez.</p>
+
+      <h3>Registrar el dispositivo</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Abrí la app o la URL de tu negocio</div>
+        <p>Si es la primera vez, va a aparecer la pantalla de registro.</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Ingresá el <strong>código de registro</strong> y un <strong>nombre para el dispositivo</strong></div>
+        <p>Ej: "Caja 1", "Tablet depósito", "Móvil feria".</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Tocá <strong>"Registrar"</strong></div>
+        <p>El dispositivo queda vinculado al negocio y ya podés empezar a operar.</p>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/registro.webp" alt="Registro del dispositivo">
+        <span class="caption">Pantalla de registro del dispositivo</span>
+      </div>
+
+      <h3>Administrar dispositivos</h3>
+      <p>Desde el menú lateral podés ver la lista de dispositivos registrados. Si uno se pierde o ya no se usa, podés <strong>revocarlo</strong> para que no pueda acceder más.</p>
+
+      <div class="manual-warn">
+        <strong>Importante:</strong> No compartas el token de registro. Si un dispositivo se revoca, todo el que lo tenga registrado pierde el acceso.
+      </div>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Poné nombres descriptivos a cada dispositivo para identificarlos fácilmente en la lista.
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="manual-section" id="ventas">
+      <h2>4. Pantalla de ventas</h2>
+      <p>La pantalla de <strong>Ventas</strong> es el módulo principal del POS (punto de venta). Desde acá podés cobrar productos al instante.</p>
+
+      <div class="manual-img-wrap">
+        <img src="cel.png" alt="Pantalla de ventas">
+        <span class="caption">Pantalla de ventas en dispositivos móviles</span>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/ventas%20vac%C3%ADo.webp" alt="Pantalla de ventas vacía">
+        <span class="caption">Pantalla de ventas antes de comenzar</span>
+      </div>
+
+      <h3>Realizar una venta</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Buscá un producto por nombre o código de barras</div>
+        <p>Usá el campo de búsqueda o escaneá con la cámara. Los resultados aparecen al instante.</p>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/busquedaproducto.webp" alt="Búsqueda de producto">
+        <span class="caption">Resultados de búsqueda de productos</span>
+      </div>
+
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Tocá el producto para agregarlo al carrito</div>
+        <p>Se puede modificar la cantidad antes de agregar.</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Revisá el carrito y tocá <strong>"Cobrar"</strong></div>
+        <p>La venta se registra, el stock se descuenta automáticamente y se genera un comprobante PDF.</p>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/carrito.webp" alt="Carrito de ventas">
+        <span class="caption">Carrito con productos listos para cobrar</span>
+      </div>
+
+      <h3>Vender a fiado</h3>
+      <p>En lugar de "Cobrar", tocá <strong>"Fiar"</strong>. Se te va a pedir que selecciones o crees un cliente. La venta se registra como pendiente en la cuenta del cliente.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/popup%20fiar.webp" alt="Popup de fiado">
+        <span class="caption">Selección de cliente para venta a fiado</span>
+      </div>
+
+      <h3>Comprobante PDF</h3>
+      <p>Después de cada venta (contado o fiado) podés descargar o imprimir un comprobante PDF con el detalle de productos, cantidades, precios y total.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/resumen%20venta.webp" alt="Resumen de venta">
+        <span class="caption">Resumen de la venta realizada</span>
+      </div>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> El escáner de código de barras funciona con la cámara trasera. Asegurate de tener buena iluminación.
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/escanerbarras.webp" alt="Escáner de código de barras">
+        <span class="caption">Escaneo de código de barras con la cámara</span>
+      </div>
+
+      <div class="manual-warn">
+        <strong>Atención:</strong> Una venta siempre descuenta stock. Si el producto tiene lotes con vencimiento, se consume primero el que vence antes (FEFO).
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="manual-section" id="productos">
+      <h2>5. Gestión de productos</h2>
+
+      <h3>Agregar un producto</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Andá a <strong>Productos</strong> desde el menú inferior</div>
+        <p>Se muestra la lista completa de productos del negocio.</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Tocá el botón <strong>"+"</strong> o <strong>"Agregar producto"</strong></div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Completá los datos</div>
+        <p><strong>Nombre</strong> (obligatorio), <strong>precio de venta</strong>, <strong>código de barras</strong> (opcional), <strong>unidad</strong> (unidad, kg o litro) y <strong>proveedor</strong> (opcional).</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">4</span> Tocá <strong>"Guardar"</strong></div>
+        <p>El producto aparece en la lista y ya se puede vender.</p>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/Tab%20productos.webp" alt="Tab de productos">
+        <span class="caption">Lista de productos del negocio</span>
+      </div>
+
+      <h3>Stock inicial y lotes</h3>
+      <p>Al crear un producto podés cargar <strong>stock inicial</strong> con opción a lote y fecha de vencimiento. Si trabajás con productos perecederos, usá los lotes para trackear vencimientos.</p>
+
+      <h3>Carga de pedido (ingreso de mercadería)</h3>
+      <p>Cuando llega un pedido de un proveedor, andá a <strong>Productos → "Cargar pedido"</strong>. Seleccioná el proveedor y agregá los productos con sus cantidades, precios y vencimientos. El stock se actualiza automáticamente.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/cargar%20pedido.webp" alt="Carga de pedido">
+        <span class="caption">Carga de pedido de mercadería</span>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/Anotar%20pedido.webp" alt="Anotar pedido">
+        <span class="caption">Registro manual de un pedido</span>
+      </div>
+
+      <h3>Importar / Exportar productos</h3>
+      <p>Desde el panel de administración (<code>/admin</code>) podés:</p>
+      <ul>
+        <li><strong>Exportar</strong> todos los productos a un archivo XLSX o CSV.</li>
+        <li><strong>Importar</strong> productos desde XLSX o CSV, agregándolos a los existentes o reemplazando el inventario completo.</li>
+      </ul>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/no%20listado.webp" alt="Producto no listado">
+        <span class="caption">Producto no encontrado en la lista</span>
+      </div>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> El código de barras facilita la búsqueda en ventas. Si no tiene código, el producto se busca por nombre.
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="manual-section" id="stock">
+      <h2>6. Stock y movimientos</h2>
+      <p>Cada vez que hacés una venta, una carga de pedido o un ajuste, se genera un <strong>movimiento de stock</strong>. Estos movimientos quedan registrados y se pueden consultar.</p>
+
+      <h3>Tipos de movimiento</h3>
+      <ul>
+        <li><strong><span class="tag">IN</span> Entrada:</strong> ingreso de mercadería (compra, devolución, ajuste positivo).</li>
+        <li><strong><span class="tag">OUT</span> Salida:</strong> egreso de stock (rotura, vencimiento, ajuste negativo).</li>
+        <li><strong><span class="tag">SALE</span> Venta:</strong> descuento por venta (se genera automáticamente al cobrar).</li>
+        <li><strong><span class="tag">ADJUSTMENT</span> Ajuste:</strong> corrección directa de stock con delta positivo o negativo.</li>
+      </ul>
+
+      <h3>Ver movimientos</h3>
+      <p>Desde el menú lateral (☰) entrá a <strong>"Movimientos"</strong>. Se muestran los últimos movimientos registrados. También podés filtrar por producto para ver su historial completo.</p>
+
+      <h3>Lotes y vencimientos (FEFO)</h3>
+      <p>Los productos con fecha de vencimiento se agrupan en <strong>lotes</strong>. Al vender, el sistema consume primero el lote que vence antes (<strong>FEFO</strong>: First Expired, First Out). Si un lote está vencido, podés eliminarlo desde la pantalla del producto y se registra una salida automática.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/Panel%20lotes.webp" alt="Panel de lotes">
+        <span class="caption">Gestión de lotes y vencimientos</span>
+      </div>
+
+      <div class="manual-warn">
+        <strong>Atención:</strong> No se puede sacar más stock del que hay. Si necesitás stock negativo, contactá a soporte.
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="manual-section" id="cuentas">
+      <h2>7. Cuentas (fiados y deudas)</h2>
+      <p>Stocke al Toque maneja dos tipos de cuentas corrientes:</p>
+
+      <ul>
+        <li><strong><span class="tag">FIADO</span> Fiado:</strong> el cliente compra pero paga después. El negocio le tiene que cobrar.</li>
+        <li><strong><span class="tag">DEUDA</span> Deuda:</strong> el negocio le debe plata a un proveedor o tercero.</li>
+      </ul>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/Cuentas.webp" alt="Pantalla de cuentas">
+        <span class="caption">Vista general de cuentas corrientes</span>
+      </div>
+
+      <h3>Agregar un fiado (venta a crédito)</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> En la pantalla de ventas, armá el carrito y tocá <strong>"Fiar"</strong></div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Seleccioná un cliente existente o creá uno nuevo</div>
+        <p>Nombre y teléfono son los datos principales.</p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Confirmá</div>
+        <p>El fiado se registra como un ítem pendiente en la cuenta del cliente.</p>
+      </div>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/cuenta%20nueva.webp" alt="Nueva cuenta">
+        <span class="caption">Creación de un nuevo cliente para fiado</span>
+      </div>
+
+      <h3>Registrar un pago</h3>
+      <p>Andá a <strong>Cuentas</strong>, seleccioná la persona y tocá <strong>"Pagar"</strong>. Podés pagar el total o ítems individuales. El saldo pendiente se actualiza automáticamente.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/Detalle%20de%20cuenta.webp" alt="Detalle de cuenta">
+        <span class="caption">Detalle de la cuenta corriente de un cliente</span>
+      </div>
+
+      <h3>Consulta pública de fiados</h3>
+      <p>Tus clientes pueden consultar su saldo sin necesidad de registrarse. Entrando a <code>tunegocio.stockealtoke.com/fiados</code> e ingresando su nombre y teléfono, ven sus ítems pendientes y el total que deben.</p>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Compartí el enlace de consulta pública con tus clientes para que sepan cuánto deben sin tener que llamarte.
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="manual-section" id="proveedores">
+      <h2>8. Proveedores</h2>
+      <p>Gestioná tus proveedores, sus calendarios de visita y entrega, y los pedidos planificados.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/proveedores.webp" alt="Proveedores">
+        <span class="caption">Lista de proveedores registrados</span>
+      </div>
+
+      <h3>Agregar un proveedor</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Andá a <strong>Proveedores</strong> desde el menú inferior</div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Tocá <strong>"Agregar proveedor"</strong></div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Ingresá el nombre y guardá</div>
+        <p>Opcionalmente podés agregar más datos de contacto.</p>
+      </div>
+
+      <h3>Calendario semanal</h3>
+      <p> Cada proveedor puede tener un <strong>día de visita</strong> (cuando pasa el vendedor) y un <strong>día de entrega</strong> (cuando trae la mercadería). Configuralo desde la pantalla del proveedor para tenerlo siempre a mano.</p>
+
+      <h3>Pedidos planificados</h3>
+      <p>Registrá pedidos futuros a un proveedor indicando nombre del pedido, fecha y monto estimado. Te sirve para hacer seguimiento de lo que encargaste y lo que falta recibir.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/pedidos.webp" alt="Pedidos">
+        <span class="caption">Pedidos planificados a proveedores</span>
+      </div>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Usá el calendario para no olvidarte qué día pasa cada proveedor. Asociá los productos al proveedor correspondiente para agilizar la carga de pedidos.
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="manual-section" id="configuracion">
+      <h2>9. Configuración</h2>
+      <p>Desde el menú lateral (☰) entrá a <strong>"Ajustes"</strong> para configurar el comportamiento del sistema.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/ajustes.webp" alt="Ajustes">
+        <span class="caption">Pantalla de configuración del sistema</span>
+      </div>
+
+      <h3>Márgenes de ganancia</h3>
+      <p>Stocke al Toque soporta dos categorías impositivas argentinas:</p>
+      <ul>
+        <li><strong>Categoría A</strong> (Remito A / Factura A): para responsables inscriptos. El precio final se calcula como <code>precio de costo × (1 + % ganancia A)</code>.</li>
+        <li><strong>Categoría B</strong> (Factura B): para consumidor final. El precio final se calcula como <code>precio de costo × (1 + IVA%) × (1 + % ganancia B)</code>.</li>
+      </ul>
+      <p>Podés cambiar los porcentajes de ganancia A, ganancia B e IVA desde los ajustes.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/ganancia.webp" alt="Márgenes de ganancia">
+        <span class="caption">Configuración de márgenes de ganancia</span>
+      </div>
+
+      <h3>Redondeo</h3>
+      <p>Activá el redondeo automático de precios para valores más comerciales:</p>
+      <ul>
+        <li>Precios menores al umbral → redondean al múltiplo más cercano (ej: cada $50).</li>
+        <li>Precios mayores o igual al umbral → redondean al múltiplo más cercano (ej: cada $100).</li>
+      </ul>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/redondeo.webp" alt="Redondeo de precios">
+        <span class="caption">Configuración de redondeo automático</span>
+      </div>
+
+      <h3>Modo oscuro</h3>
+      <p>Podés alternar entre tema claro y oscuro desde los ajustes. El cambio se aplica al instante.</p>
+
+      <div class="manual-img-wrap">
+        <img src="assets%20manual/moneda%20y%20formato.webp" alt="Moneda y formato">
+        <span class="caption">Configuración de moneda y formato de precios</span>
+      </div>
+
+      <div class="manual-warn">
+        <strong>Atención:</strong> Los cambios en márgenes y redondeo afectan los precios que se muestran al vender. Revisá los valores antes de modificar.
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="manual-section" id="backups">
+      <h2>10. Copias de seguridad</h2>
+      <p>Tu información se puede respaldar y restaurar desde el panel de administración (<code>/admin</code>).</p>
+
+      <h3>Descargar copia de seguridad</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> Ingresá a la URL de administración: <code>tunegocio.stockealtoke.com/admin</code></div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Andá a la sección <strong>"Backup"</strong></div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">3</span> Tocá <strong>"Descargar backup"</strong></div>
+        <p>Dependiendo del motor de base de datos, se descarga un archivo <code>.db</code> (SQLite) o <code>.json</code> (PostgreSQL).</p>
+      </div>
+
+      <h3>Restaurar una copia</h3>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">1</span> En la misma sección <strong>"Backup"</strong>, seleccioná el archivo de respaldo</div>
+        <p></p>
+      </div>
+      <div class="manual-step">
+        <div class="step-title"><span class="step-num">2</span> Tocá <strong>"Restaurar"</strong></div>
+        <p>El sistema reemplaza todos los datos actuales por los del backup.</p>
+      </div>
+
+      <div class="manual-warn">
+        <strong>Importante:</strong> Restaurar un backup <strong>sobrescribe todos los datos actuales</strong> del negocio. Hacé una copia de seguridad antes de restaurar.
+      </div>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Descargá un backup periódicamente (ej: una vez por semana) y guardalo en la nube o en un disco externo.
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="manual-section" id="soporte">
+      <h2>11. Soporte técnico</h2>
+      <p>Si tenés dudas o problemas, contactanos por cualquiera de estos canales:</p>
+
+      <ul>
+        <li><strong>Correo electrónico:</strong> <a href="mailto:soporte@nwaresoluciones.com">soporte@nwaresoluciones.com</a></li>
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/542634947776">+54 2634 94-7776</a></li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/nware_servicio" target="_blank">@nware_servicio</a></li>
+      </ul>
+
+      <h3>Problemas comunes</h3>
+      <ul>
+        <li><strong>No puedo registrarme:</strong> verificá que el código de registro sea correcto y que el dispositivo no esté ya registrado.</li>
+        <li><strong>No encuentro un producto:</strong> usá la barra de búsqueda o escaneá el código de barras.</li>
+        <li><strong>Error al vender:</strong> revisá que haya stock suficiente. Si tiene lote, que ninguno esté vencido.</li>
+        <li><strong>No carga la app:</strong> verificá la conexión a Internet. Si es la primera vez, necesitás conexión para descargar los archivos.</li>
+      </ul>
+
+      <h3>Reportar un error</h3>
+      <p>Si encontraste un comportamiento inesperado, enviános un correo con:</p>
+      <ul>
+        <li>Descripción del problema.</li>
+        <li>Pasos para reproducirlo.</li>
+        <li>Captura de pantalla (si aplica).</li>
+        <li>Navegador y sistema operativo que usás.</li>
+      </ul>
+
+      <div class="manual-tip">
+        <strong>Tip:</strong> Incluí toda la información posible para que podamos ayudarte más rápido.
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a href="/" class="footer-brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke al Toque</a>
+      <p class="muted">Un producto de NWare Soluciones</p>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px;">
+        <a href="mailto:soporte@nwaresoluciones.com" style="color:var(--muted);font-size:12.5px;">soporte@nwaresoluciones.com</a>
+        <a href="https://instagram.com/nware_servicio" target="_blank" style="color:var(--muted);font-size:12.5px;">@nware_servicio</a>
+        <span style="color:var(--muted-soft);font-size:12.5px;">+54 263 494-7776</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://sat.nwaresoluciones.com">Inicio</a>
+      <a href="https://sat.nwaresoluciones.com/planes">Planes</a>
+      <a href="tos.html">Términos</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-AR', { year:'numeric', month:'long', day:'numeric' });
+</script>
+</body>
+</html>
