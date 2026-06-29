@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F1117">
+<title>Registrarse - Stocke al Toque</title>
+<meta name="description" content="Crea tu negocio en Stocke al Toque y entra a tu tenant con permisos de dueño.">
+<base href="/">
+<link rel="icon" href="stock-al-toque-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#5CBF4A;--primary-light:#7DD96A;--primary-glow:rgba(92,191,74,.22);--accent:#FFD54A;--bg:#0F1117;--bg-secondary:#181C24;--surface:#1E232E;--surface-hover:#252B38;--line:#2A2F3A;--line-strong:#383E4A;--text:#FFFFFF;--muted:#AAB2C0;--muted-soft:#6B7280;--danger:#F97066;--shadow:0 22px 60px -28px rgba(0,0,0,.75);--font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--font-display:"DM Sans","Inter",sans-serif;--radius-sm:8px;--radius-md:14px;--radius-lg:20px;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{background:var(--bg);-webkit-text-size-adjust:100%;}
+body{margin:0;min-height:100dvh;background:radial-gradient(700px circle at 80% -10%,rgba(92,191,74,.1),transparent 58%),radial-gradient(600px circle at 10% 20%,rgba(255,213,74,.06),transparent 55%),linear-gradient(180deg,#0F1117 0%,#11151D 52%,#0F1117 100%);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px;}
+.container{width:min(1120px,100%);margin:0 auto;padding:0 20px;}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(15,17,23,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:10px 20px;}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:18px;font-weight:700;}
+.brand-mark{width:32px;height:32px;border-radius:9px;flex-shrink:0;object-fit:contain;}
+.nav-links{display:none;gap:26px;font-size:14px;font-weight:600;color:var(--muted);}
+.nav-links a:hover{color:var(--primary-light);}
+.btn{min-height:42px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);background:var(--bg-secondary);color:var(--text);display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 18px;font-size:14px;font-weight:700;transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease;cursor:pointer;font-family:inherit;}
+.btn:hover{transform:translateY(-1px);border-color:var(--primary);color:var(--primary-light);background:var(--surface-hover);}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:#0A0E14;box-shadow:0 8px 28px -16px var(--primary);}
+.btn.primary:hover{background:var(--primary-light);color:#0A0E14;}
+.btn.full{width:100%;}
+.hero{padding:56px 0 72px;}
+.signup-grid{display:grid;gap:28px;align-items:start;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(92,191,74,.32);background:rgba(92,191,74,.1);color:var(--primary-light);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:18px;}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,6vw,52px);line-height:1.08;margin:0 0 18px;letter-spacing:0;}
+h1 .hl{color:var(--primary);}
+.lead{font-size:17px;color:var(--muted);max-width:52ch;margin:0 0 24px;}
+.trust{display:grid;gap:10px;color:var(--muted);font-size:14px;margin-top:26px;}
+.trust span{display:flex;align-items:center;gap:8px;}
+.check{color:var(--primary);font-weight:800;}
+.signup-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:24px;}
+.signup-card h2{font-family:var(--font-display);font-size:22px;margin:0 0 6px;letter-spacing:0;}
+.signup-card p{margin:0 0 18px;color:var(--muted);font-size:14px;}
+.form{display:grid;gap:14px;}
+label{display:grid;gap:6px;color:var(--muted);font-size:12px;font-weight:700;}
+input{width:100%;min-height:44px;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg-secondary);color:var(--text);padding:0 12px;font:inherit;}
+input::placeholder{color:var(--muted-soft);}
+input:focus{border-color:var(--primary);outline:3px solid var(--primary-glow);}
+.slug-preview{min-height:22px;color:var(--muted-soft);font-size:12px;}
+.message{min-height:22px;color:var(--danger);font-size:13px;font-weight:700;}
+.message.ok{color:var(--primary-light);}
+.fineprint{margin-top:14px;color:var(--muted-soft);font-size:12px;}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted-soft);font-size:12.5px;}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+@media (min-width:840px){.nav-links{display:flex;}.signup-grid{grid-template-columns:1fr minmax(360px,440px);}.hero{padding-top:72px;}}
+@media (max-width:520px){.topbar-inner{padding:10px 16px;}.signup-card{padding:20px;}.container{padding:0 16px;}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner container">
+    <a href="index.html" class="brand"><img class="brand-mark" src="stock-al-toque-logo.png" alt="Stocke al Toque">Stocke al Toque</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="index.html#caracteristicas">Caracteristicas</a>
+      <a href="planes.html">Planes</a>
+      <a href="manual.html">Manual</a>
+    </nav>
+    <a href="planes.html" class="btn">Ver planes</a>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="container signup-grid">
+    <section>
+      <span class="eyebrow">Alta de negocio</span>
+      <h1>Crea tu tenant y entra como <span class="hl">dueño</span></h1>
+      <p class="lead">Registramos tu negocio en la plataforma, creamos su subdominio y te dejamos dentro con permisos completos para empezar a cargar stock, ventas y cuentas.</p>
+      <div class="trust">
+        <span><b class="check">✓</b> Tenant separado por negocio en la base SaaS.</span>
+        <span><b class="check">✓</b> Primer dispositivo con rol dueño/admin.</span>
+        <span><b class="check">✓</b> Redireccion automatica a tu subdominio.</span>
+      </div>
+    </section>
+
+    <section class="signup-card">
+      <h2>Datos del negocio</h2>
+      <p>El subdominio identifica tu espacio de trabajo.</p>
+      <form id="registerForm" class="form">
+        <label>Nombre del negocio
+          <input id="businessName" name="business_name" autocomplete="organization" required placeholder="Ej: Almacen Norte">
+        </label>
+        <label>Subdominio
+          <input id="slug" name="slug" autocomplete="off" required placeholder="almacen_norte">
+        </label>
+        <div id="slugPreview" class="slug-preview">https://tu-negocio.sat.nwaresoluciones.com</div>
+        <label>Tu nombre
+          <input id="ownerName" name="owner_name" autocomplete="name" placeholder="Opcional">
+        </label>
+        <label>Email
+          <input id="ownerEmail" name="owner_email" type="email" autocomplete="email" placeholder="Opcional">
+        </label>
+        <p id="message" class="message" aria-live="polite"></p>
+        <button id="submitButton" type="submit" class="btn primary full">Crear negocio</button>
+      </form>
+      <p class="fineprint">Al continuar aceptas los terminos de uso y la configuracion inicial del plan disponible.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 NWare Soluciones</span>
+    <a href="tos.html">Terminos de uso y privacidad</a>
+  </div>
+</footer>
+
+<script>
+const API_BASE = "https://stockealtoqueserver-production.up.railway.app";
+const $ = (selector) => document.querySelector(selector);
+
+function slugFromName(value) {
+  return value.trim().toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function setMessage(text, ok = false) {
+  const message = $("#message");
+  message.textContent = text;
+  message.classList.toggle("ok", ok);
+}
+
+function updatePreview() {
+  const slug = slugFromName($("#slug").value || $("#businessName").value || "tu negocio");
+  $("#slugPreview").textContent = `https://${slug || "tu-negocio"}.sat.nwaresoluciones.com`;
+}
+
+async function responseErrorMessage(response) {
+  const text = await response.text();
+  if (!text) return `Error ${response.status}`;
+  try {
+    const data = JSON.parse(text);
+    return data.detail || data.error || text;
+  } catch {
+    return text;
+  }
+}
+
+$("#businessName").addEventListener("input", () => {
+  if (!$("#slug").dataset.touched) $("#slug").value = slugFromName($("#businessName").value);
+  updatePreview();
+});
+$("#slug").addEventListener("input", () => {
+  $("#slug").dataset.touched = "1";
+  $("#slug").value = slugFromName($("#slug").value);
+  updatePreview();
+});
+
+$("#registerForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = $("#submitButton");
+  button.disabled = true;
+  setMessage("Creando tu negocio...", true);
+  try {
+    const response = await fetch(`${API_BASE}/tenants/register`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        business_name: $("#businessName").value.trim(),
+        slug: $("#slug").value.trim(),
+        owner_name: $("#ownerName").value.trim() || null,
+        owner_email: $("#ownerEmail").value.trim() || null,
+        device_name: $("#ownerName").value.trim() || "Dueño",
+      }),
+    });
+    if (!response.ok) throw new Error(await responseErrorMessage(response));
+    const data = await response.json();
+    setMessage("Listo. Redirigiendo a tu negocio...", true);
+    window.location.href = data.redirect_url || data.business.access_url;
+  } catch (error) {
+    setMessage(error.message);
+    button.disabled = false;
+  }
+});
+
+updatePreview();
+</script>
+</body>
+</html>
