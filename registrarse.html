@@ -51,6 +51,9 @@ input:focus{border-color:var(--primary);outline:3px solid var(--primary-glow);}
 .slug-preview{min-height:22px;color:var(--muted-soft);font-size:12px;}
 .message{min-height:22px;color:var(--danger);font-size:13px;font-weight:700;}
 .message.ok{color:var(--primary-light);}
+.checkbox-label{display:flex;align-items:flex-start;gap:8px;color:var(--muted);font-size:12px;font-weight:400;cursor:pointer;line-height:1.4;}
+.checkbox-label input[type=checkbox]{width:16px;min-height:16px;height:16px;accent-color:var(--primary);margin:2px 0 0;cursor:pointer;flex-shrink:0;}
+.checkbox-label a{color:var(--primary-light);text-decoration:underline;}
 .fineprint{margin-top:14px;color:var(--muted-soft);font-size:12px;}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted-soft);font-size:12.5px;}
 .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
@@ -100,6 +103,10 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted-soft);f
         </label>
         <label>Email
           <input id="ownerEmail" name="owner_email" type="email" autocomplete="email" placeholder="Opcional">
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="termsCheck">
+          He leído los <a href="tos.html" target="_blank">términos y condiciones de uso y términos de privacidad</a>
         </label>
         <p id="message" class="message" aria-live="polite"></p>
         <button id="submitButton" type="submit" class="btn primary full">Crear negocio</button>
@@ -162,6 +169,9 @@ $("#slug").addEventListener("input", () => {
 
 $("#registerForm").addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (!$("#termsCheck").checked) {
+    return setMessage("Debes aceptar los términos y condiciones");
+  }
   const button = $("#submitButton");
   button.disabled = true;
   setMessage("Creando tu negocio...", true);
